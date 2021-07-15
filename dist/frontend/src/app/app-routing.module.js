@@ -6,20 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
-const common_1 = require("@nestjs/common");
-const typeorm_1 = require("@nestjs/typeorm");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const ormcofig_1 = require("./ormcofig");
-let AppModule = class AppModule {
+exports.AppRoutingModule = void 0;
+const core_1 = require("@angular/core");
+const router_1 = require("@angular/router");
+const routes = [];
+let AppRoutingModule = class AppRoutingModule {
 };
-AppModule = __decorate([
-    common_1.Module({
-        imports: [typeorm_1.TypeOrmModule.forRoot(ormcofig_1.default)],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+AppRoutingModule = __decorate([
+    core_1.NgModule({
+        imports: [router_1.RouterModule.forRoot(routes)],
+        exports: [router_1.RouterModule]
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], AppRoutingModule);
+exports.AppRoutingModule = AppRoutingModule;
+//# sourceMappingURL=app-routing.module.js.map
