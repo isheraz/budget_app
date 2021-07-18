@@ -1,12 +1,24 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import config from './ormcofig';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { DatabaseModule } from './database/database.module';
+import { ExpenseModule } from './expenses/expense.module';
+import { CategoryModule } from './category/category.module';
+import { SubCategoryModule } from './sub-category/sub-category.module';
+import { GroupModule } from './group/group.module';
+import { UsersGroupsModule } from './users-groups/users-groups.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(config)],
-  controllers: [AppController],
+  imports: [
+    DatabaseModule,
+    ExpenseModule,
+    CategoryModule,
+    SubCategoryModule,
+    GroupModule,
+    UsersGroupsModule,
+  ],
+  controllers: [],
   providers: [AppService],
 })
 export class AppModule {}
