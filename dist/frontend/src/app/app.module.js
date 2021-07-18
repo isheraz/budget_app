@@ -11,6 +11,8 @@ const core_1 = require("@angular/core");
 const platform_browser_1 = require("@angular/platform-browser");
 const app_routing_module_1 = require("./app-routing.module");
 const app_component_1 = require("./app.component");
+const animations_1 = require("@angular/platform-browser/animations");
+const toolbar_1 = require("@angular/material/toolbar");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -20,7 +22,9 @@ AppModule = __decorate([
         ],
         imports: [
             platform_browser_1.BrowserModule,
-            app_routing_module_1.AppRoutingModule
+            app_routing_module_1.AppRoutingModule,
+            animations_1.BrowserAnimationsModule,
+            toolbar_1.MatToolbarModule
         ],
         providers: [],
         bootstrap: [app_component_1.AppComponent]
