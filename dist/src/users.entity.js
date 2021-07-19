@@ -18,10 +18,6 @@ __decorate([
     __metadata("design:type", Number)
 ], Users.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", Number)
-], Users.prototype, "countries_id", void 0);
-__decorate([
     typeorm_1.Column({ length: 32 }),
     __metadata("design:type", String)
 ], Users.prototype, "name", void 0);
