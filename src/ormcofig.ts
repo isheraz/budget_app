@@ -7,7 +7,7 @@ const config: PostgresConnectionOptions = {
     username: 'postgres',
     password: 'root',
     database: 'budget_app',
-    entities: ['dist/**/*.entity.js'],
+    entities: [__dirname + '/../**/*.entity{.ts,.js}'],
     synchronize: true,
     // migrations: [
     //     'dist/src/migrations/*.js'
