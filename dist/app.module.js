@@ -14,11 +14,13 @@ const app_service_1 = require("./app.service");
 const user_module_1 = require("./user/user.module");
 const ormcofig_1 = require("./ormcofig");
 const auth_module_1 = require("./auth/auth.module");
+const database_module_1 = require("./database/database.module");
+const expense_module_1 = require("./expenses/expense.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [typeorm_1.TypeOrmModule.forRoot(ormcofig_1.default), user_module_1.UserModule, auth_module_1.AuthModule],
+        imports: [typeorm_1.TypeOrmModule.forRoot(ormcofig_1.default), user_module_1.UserModule, auth_module_1.AuthModule, database_module_1.DatabaseModule, expense_module_1.ExpenseModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
