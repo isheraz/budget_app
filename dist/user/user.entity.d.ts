@@ -5,6 +5,7 @@ export declare class User extends BaseEntity {
     email: string;
     phone: string;
     password: string;
+    email_verified_at: Date;
     created_at: Date;
     updated_at: Date;
     setPassword(password: string): Promise<void>;

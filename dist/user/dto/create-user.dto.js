@@ -30,11 +30,5 @@ __decorate([
     class_validator_1.Matches(app_utils_1.REGEX.PASSWORD_RULE, { message: app_utils_1.MESSAGE.PASSWORD_RULE_MESSAGE }),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "password", void 0);
-__decorate([
-    class_validator_1.IsNotEmpty(),
-    class_validator_1.Length(8, 24),
-    class_validator_1.Matches(app_utils_1.REGEX.PASSWORD_RULE, { message: app_utils_1.MESSAGE.PASSWORD_RULE_MESSAGE }),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "confirm_password", void 0);
 exports.CreateUserDto = CreateUserDto;
 //# sourceMappingURL=create-user.dto.js.map

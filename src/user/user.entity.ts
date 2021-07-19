@@ -28,6 +28,9 @@ export class User extends BaseEntity {
     
     @Column()
     password: string;
+
+    @Column({nullable: true})
+    email_verified_at: Date;
     
     @CreateDateColumn()
     created_at: Date;
