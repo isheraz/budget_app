@@ -7,7 +7,7 @@ const config = {
     username: 'postgres',
     password: 'root',
     database: 'budget_app',
-    entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+    entities: ['dist/**/*.entity.js'],
     synchronize: true,
 };
 exports.default = config;

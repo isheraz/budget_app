@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Countries = void 0;
 const typeorm_1 = require("typeorm");
-const users_entity_1 = require("./users.entity");
 let Countries = class Countries {
 };
 __decorate([
@@ -42,10 +41,6 @@ __decorate([
     typeorm_1.UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" }),
     __metadata("design:type", Date)
 ], Countries.prototype, "updated_at", void 0);
-__decorate([
-    typeorm_1.OneToMany(() => users_entity_1.Users, users => users.countries),
-    __metadata("design:type", Array)
-], Countries.prototype, "users", void 0);
 Countries = __decorate([
     typeorm_1.Entity()
 ], Countries);

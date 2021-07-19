@@ -9,40 +9,53 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Countries = void 0;
+exports.User = void 0;
 const typeorm_1 = require("typeorm");
-let Countries = class Countries {
+const bcrypt = require("bcrypt");
+let User = class User extends typeorm_1.BaseEntity {
+    async setPassword(password) {
+        const salt = await bcrypt.genSalt();
+        this.password = await bcrypt.hash(password || this.password, salt);
+    }
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
     __metadata("design:type", Number)
-], Countries.prototype, "id", void 0);
+], User.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column({ length: 32 }),
+    typeorm_1.Column(),
     __metadata("design:type", String)
-], Countries.prototype, "name", void 0);
+], User.prototype, "name", void 0);
 __decorate([
-    typeorm_1.Column({ length: 32 }),
+    typeorm_1.Column({
+        unique: true,
+    }),
     __metadata("design:type", String)
-], Countries.prototype, "currency", void 0);
+], User.prototype, "email", void 0);
 __decorate([
-    typeorm_1.Column({ length: 4 }),
+    typeorm_1.Column({ nullable: true }),
     __metadata("design:type", String)
-], Countries.prototype, "currency_symbol", void 0);
+], User.prototype, "phone", void 0);
 __decorate([
-    typeorm_1.Column({ length: 8 }),
+    typeorm_1.Column(),
     __metadata("design:type", String)
-], Countries.prototype, "dialing_code", void 0);
+], User.prototype, "password", void 0);
 __decorate([
-    typeorm_1.CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)
-], Countries.prototype, "created_at", void 0);
+], User.prototype, "created_at", void 0);
 __decorate([
-    typeorm_1.UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.UpdateDateColumn(),
     __metadata("design:type", Date)
-], Countries.prototype, "updated_at", void 0);
-Countries = __decorate([
-    typeorm_1.Entity()
-], Countries);
-exports.Countries = Countries;
-//# sourceMappingURL=countries.entity.js.map
+], User.prototype, "updated_at", void 0);
+__decorate([
+    typeorm_1.BeforeInsert(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], User.prototype, "setPassword", null);
+User = __decorate([
+    typeorm_1.Entity({ name: 'users' })
+], User);
+exports.User = User;
+//# sourceMappingURL=user.entity.js.map

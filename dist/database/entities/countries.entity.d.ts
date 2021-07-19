@@ -1,4 +1,3 @@
-import { Users } from './users.entity';
 export declare class Countries {
     id: number;
     name: string;
@@ -7,5 +6,4 @@ export declare class Countries {
     dialing_code: string;
     created_at: Date;
     updated_at: Date;
-    users: Users[];
 }

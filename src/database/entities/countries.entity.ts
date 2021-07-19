@@ -1,5 +1,4 @@
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { Users } from './users.entity';
 
 @Entity()
 export class Countries {
@@ -17,8 +16,4 @@ export class Countries {
     public created_at: Date;
     @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" })
     public updated_at: Date;
-
-    // Relations
-    @OneToMany(() => Users, users => users.countries)
-    users: Users[];
 }
