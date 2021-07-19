@@ -1,6 +1,5 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
-enum paid_for_type { USER = 'USER', GROUP = 'GROUP' }
 @Entity()
 export class Expenses {
     @PrimaryGeneratedColumn()
@@ -17,8 +16,8 @@ export class Expenses {
     users_id: number;
     @Column()
     paid_by: number;
-    @Column('text')
-    paid_for_type: paid_for_type;
+    @Column()
+    paid_for_type: string;
     @Column()
     paid_for_id: number;
     @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
