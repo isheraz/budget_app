@@ -1,25 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Categories } from 'src/database/entities/categories.entity';
+import { SubCategories } from 'src/database/entities/sub_categories.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class CategoryService {
+export class SubCategoryService {
   constructor(
-    @InjectRepository(Categories)
-    private categoryRepository: Repository<Categories>
+    @InjectRepository(SubCategories)
+    private categoryRepository: Repository<SubCategories>
   ) {}
 
-  getAll(): Promise<Categories[]> {
+  getAll(): Promise<SubCategories[]> {
     return this.categoryRepository.find();
   }
 
-  get(id: number): Promise<Categories> {
+  get(id: number): Promise<SubCategories> {
     return this.categoryRepository.findOne(id);
   }
 
-  async insert(name: string, type: string): Promise<{}> {
+  async insert(name: string, type: string, categories_id: number): Promise<{}> {
     const obj = this.categoryRepository.create();
+    obj.categories_id = categories_id;
     obj.name = name;
     obj.type = type;
     const resp = await this.categoryRepository.save(obj);
@@ -37,12 +38,18 @@ export class CategoryService {
     return response;
   }
 
-  async update(id: number, name: string, type: string): Promise<{}> {
+  async update(
+    id: number,
+    name: string,
+    type: string,
+    categories_id: number
+  ): Promise<{}> {
     const resp = await this.categoryRepository.update(
       { id: id },
       {
         name: name,
         type: type,
+        categories_id: categories_id,
       }
     );
     const response = {

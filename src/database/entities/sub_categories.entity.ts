@@ -6,18 +6,14 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-enum type {
-  INCOME = 'INCOME',
-  EXPENSE = 'EXPENSE',
-}
 @Entity()
 export class SubCategories {
   @PrimaryGeneratedColumn()
   id: number;
   @Column({ length: 32 })
   name: string;
-  @Column('text')
-  type: type;
+  @Column()
+  type: string;
   @Column()
   categories_id: number;
   @CreateDateColumn({
