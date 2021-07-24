@@ -1,7 +1,9 @@
-import { CreateUserDto } from './dto/create-user.dto';
+import { Repository } from "typeorm";
 import { User } from './user.entity';
+import { JwtService } from '@nestjs/jwt';
 export declare class UserService {
-    constructor();
-    register(request: CreateUserDto): Promise<User>;
+    private userRepository;
+    private JwtService;
+    constructor(userRepository: Repository<User>, JwtService: JwtService);
     findOne(email: string): any;
 }

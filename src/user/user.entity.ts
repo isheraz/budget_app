@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
-@Entity({ name: 'users' })
+@Entity('users')
 export class User extends BaseEntity {
     
     @PrimaryGeneratedColumn()
