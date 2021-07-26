@@ -19,6 +19,7 @@ const create_user_dto_1 = require("../user/dto/create-user.dto");
 const login_dto_1 = require("../user/dto/login.dto");
 const user_entity_1 = require("../user/user.entity");
 const auth_service_1 = require("./auth.service");
+const local_auth_guard_1 = require("./local-auth.guard");
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
@@ -41,6 +42,7 @@ let AuthController = class AuthController {
     }
 };
 __decorate([
+    common_1.UseGuards(local_auth_guard_1.LocalAuthGuard),
     common_1.Post('/login'),
     __param(0, common_1.Body(app_utils_1.SETTINGS.VALIDATION_PIPE)),
     __metadata("design:type", Function),

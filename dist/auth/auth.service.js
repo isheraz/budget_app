@@ -26,6 +26,7 @@ const jwt_1 = require("@nestjs/jwt");
 const create_user_dto_1 = require("../user/dto/create-user.dto");
 const user_entity_1 = require("../user/user.entity");
 const user_service_1 = require("../user/user.service");
+const bcrypt = require("bcrypt");
 let AuthService = class AuthService {
     constructor(userService, JwtService) {
         this.userService = userService;
@@ -47,7 +48,8 @@ let AuthService = class AuthService {
     }
     async validateUser(username, password) {
         const user = await this.userService.findOne(username);
-        if (user && user.password === password) {
+        const isPasswordMatch = bcrypt.compare(password, user.password);
+        if (user && isPasswordMatch) {
             const { password, email } = user, rest = __rest(user, ["password", "email"]);
             return rest;
         }

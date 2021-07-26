@@ -17,21 +17,18 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
 const user_entity_1 = require("./user.entity");
 const typeorm_2 = require("@nestjs/typeorm");
-const jwt_1 = require("@nestjs/jwt");
 let UserService = class UserService {
-    constructor(userRepository, JwtService) {
+    constructor(userRepository) {
         this.userRepository = userRepository;
-        this.JwtService = JwtService;
     }
-    findOne(email) {
-        return {};
+    async findOne(email) {
+        return await this.userRepository.findOne({ where: { email: email } });
     }
 };
 UserService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_2.InjectRepository(user_entity_1.User)),
-    __metadata("design:paramtypes", [typeorm_1.Repository,
-        jwt_1.JwtService])
+    __metadata("design:paramtypes", [typeorm_1.Repository])
 ], UserService);
 exports.UserService = UserService;
 //# sourceMappingURL=user.service.js.map
