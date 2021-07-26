@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
 const app_utils_1 = require("../app.utils");
+const postgres_error_codes_1 = require("../database/postgres-error-codes");
 const create_user_dto_1 = require("../user/dto/create-user.dto");
 const login_dto_1 = require("../user/dto/login.dto");
 const user_entity_1 = require("../user/user.entity");
@@ -28,16 +29,19 @@ let AuthController = class AuthController {
         try {
             return await this.authService.login(request);
         }
-        catch (err) {
-            return err;
+        catch (error) {
+            throw new common_1.HttpException('Something went wrong', common_1.HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     async register(request) {
         try {
             return await this.authService.register(request);
         }
-        catch (err) {
-            return err;
+        catch (error) {
+            if ((error === null || error === void 0 ? void 0 : error.code) === postgres_error_codes_1.POSTGRES_ERROR_CODES.UNIQUE_VIOLATION) {
+                throw new common_1.HttpException('User with that email already exists', common_1.HttpStatus.BAD_REQUEST);
+            }
+            throw new common_1.HttpException('Something went wrong', common_1.HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 };

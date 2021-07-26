@@ -5,6 +5,8 @@ import { AuthService } from './auth.service';
 export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);
-    login(request: LoginDto): Promise<any>;
+    login(request: LoginDto): Promise<{
+        access_token: string;
+    }>;
     register(request: CreateUserDto): Promise<User>;
 }

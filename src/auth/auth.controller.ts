@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Post, UseGuards } from '@nestjs/common';
 import { SETTINGS } from 'src/app.utils';
+import { POSTGRES_ERROR_CODES } from 'src/database/postgres-error-codes';
 import { CreateUserDto } from 'src/user/dto/create-user.dto';
 import { LoginDto } from 'src/user/dto/login.dto';
 import { User } from 'src/user/user.entity';
@@ -19,8 +20,8 @@ export class AuthController {
         try {
             return await this.authService.login(request);
         }
-        catch(err){
-            return err;
+        catch(error){
+            throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -32,8 +33,12 @@ export class AuthController {
             try{
                 return await this.authService.register(request);
             }
-            catch(err){
-                return err;
+            catch(error){
+                if (error?.code === POSTGRES_ERROR_CODES.UNIQUE_VIOLATION) {
+                    throw new HttpException('User with that email already exists', HttpStatus.BAD_REQUEST);
+                  }
+                  throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
+                }
             }
     }
 
