@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
-@Entity({ name: 'users' })
+@Entity('users')
 export class User extends BaseEntity {
     
     @PrimaryGeneratedColumn()
@@ -28,6 +28,9 @@ export class User extends BaseEntity {
     
     @Column()
     password: string;
+
+    @Column({nullable: true})
+    email_verified_at: Date;
     
     @CreateDateColumn()
     created_at: Date;

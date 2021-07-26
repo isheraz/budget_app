@@ -1,18 +1,43 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Post, UseGuards } from '@nestjs/common';
+import { SETTINGS } from 'src/app.utils';
+import { POSTGRES_ERROR_CODES } from 'src/database/postgres-error-codes';
+import { CreateUserDto } from 'src/user/dto/create-user.dto';
+import { LoginDto } from 'src/user/dto/login.dto';
+import { User } from 'src/user/user.entity';
+import { AuthService } from './auth.service';
+import { LocalAuthGuard } from './local-auth.guard';
 
 @Controller('auth')
 export class AuthController {
+    constructor(private readonly authService: AuthService){}
 
-    @Get('/login')
-    login(): any {
-        return 'login';
+    @UseGuards(LocalAuthGuard)
+    @Post('/login')
+    async login(
+        @Body(SETTINGS.VALIDATION_PIPE) 
+        request: LoginDto
+        ){
+        try {
+            return await this.authService.login(request);
+        }
+        catch(error){
+            throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @Post('/register')
-    register(@Body() request): any {
-        return {data: request};
+    async register(
+        @Body(SETTINGS.VALIDATION_PIPE)
+        request: CreateUserDto,
+        ):Promise<User>{
+            try{
+                return await this.authService.register(request);
+            }
+            catch(error){
+                if (error?.code === POSTGRES_ERROR_CODES.UNIQUE_VIOLATION) {
+                    throw new HttpException('User with that email already exists', HttpStatus.BAD_REQUEST);
+                  }
+                throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
     }
-
-
-
-}

@@ -18,13 +18,24 @@ let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
     common_1.Module({
-        imports: [user_module_1.UserModule, passport_1.PassportModule, jwt_1.JwtModule.register({
-                secret: 'SECRET',
+        imports: [
+            user_module_1.UserModule,
+            passport_1.PassportModule,
+            jwt_1.JwtModule.register({
+                secret: 'secret-key-for-budget-app',
                 signOptions: { expiresIn: '60s' },
-            })],
-        providers: [auth_service_1.AuthService, local_strategy_1.LocalStrategy],
-        exports: [auth_service_1.AuthService],
-        controllers: [auth_controller_1.AuthController],
+            })
+        ],
+        providers: [
+            auth_service_1.AuthService,
+            local_strategy_1.LocalStrategy
+        ],
+        exports: [
+            auth_service_1.AuthService
+        ],
+        controllers: [
+            auth_controller_1.AuthController
+        ],
     })
 ], AuthModule);
 exports.AuthModule = AuthModule;

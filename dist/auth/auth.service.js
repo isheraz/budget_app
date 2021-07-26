@@ -23,25 +23,37 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
+const create_user_dto_1 = require("../user/dto/create-user.dto");
+const user_entity_1 = require("../user/user.entity");
 const user_service_1 = require("../user/user.service");
+const bcrypt = require("bcrypt");
 let AuthService = class AuthService {
     constructor(userService, JwtService) {
         this.userService = userService;
         this.JwtService = JwtService;
     }
+    async register(request) {
+        const user = new user_entity_1.User();
+        user.name = request.name;
+        user.email = request.email;
+        user.phone = request.phone;
+        user.password = request.password;
+        return await user.save();
+    }
+    async login(user) {
+        const payload = { name: user.name, subject: user.id };
+        return {
+            access_token: this.JwtService.sign(payload)
+        };
+    }
     async validateUser(username, password) {
         const user = await this.userService.findOne(username);
-        if (user && user.password === password) {
+        const isPasswordMatch = bcrypt.compare(password, user.password);
+        if (user && isPasswordMatch) {
             const { password, email } = user, rest = __rest(user, ["password", "email"]);
             return rest;
         }
         return null;
-    }
-    async login(user) {
-        const payload = { name: user.name, sub: user.id };
-        return {
-            access_token: this.JwtService.sign(payload)
-        };
     }
 };
 AuthService = __decorate([
