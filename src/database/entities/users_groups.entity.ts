@@ -13,7 +13,7 @@ export class UsersGroups {
   @Column({ length: 32 })
   name: string;
   @Column()
-  user_id: number;
+  users_id: number;
   @Column()
   groups_id: number;
   @CreateDateColumn({
