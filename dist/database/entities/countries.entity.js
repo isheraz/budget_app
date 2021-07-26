@@ -34,11 +34,18 @@ __decorate([
     __metadata("design:type", String)
 ], Countries.prototype, "dialing_code", void 0);
 __decorate([
-    typeorm_1.CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.CreateDateColumn({
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP(6)',
+    }),
     __metadata("design:type", Date)
 ], Countries.prototype, "created_at", void 0);
 __decorate([
-    typeorm_1.UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.UpdateDateColumn({
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP(6)',
+        onUpdate: 'CURRENT_TIMESTAMP(6)',
+    }),
     __metadata("design:type", Date)
 ], Countries.prototype, "updated_at", void 0);
 Countries = __decorate([

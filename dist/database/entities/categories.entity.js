@@ -11,11 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Categories = void 0;
 const typeorm_1 = require("typeorm");
-var type;
-(function (type) {
-    type["INCOME"] = "INCOME";
-    type["EXPENSE"] = "EXPENSE";
-})(type || (type = {}));
 let Categories = class Categories {
 };
 __decorate([
@@ -27,15 +22,22 @@ __decorate([
     __metadata("design:type", String)
 ], Categories.prototype, "name", void 0);
 __decorate([
-    typeorm_1.Column('text'),
+    typeorm_1.Column({ length: 16 }),
     __metadata("design:type", String)
 ], Categories.prototype, "type", void 0);
 __decorate([
-    typeorm_1.CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.CreateDateColumn({
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP(6)',
+    }),
     __metadata("design:type", Date)
 ], Categories.prototype, "created_at", void 0);
 __decorate([
-    typeorm_1.UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.UpdateDateColumn({
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP(6)',
+        onUpdate: 'CURRENT_TIMESTAMP(6)',
+    }),
     __metadata("design:type", Date)
 ], Categories.prototype, "updated_at", void 0);
 Categories = __decorate([

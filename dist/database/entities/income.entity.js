@@ -31,7 +31,7 @@ __decorate([
     __metadata("design:type", String)
 ], Income.prototype, "description", void 0);
 __decorate([
-    typeorm_1.Column({ type: "timestamp", nullable: true }),
+    typeorm_1.Column({ type: 'timestamp', nullable: true }),
     __metadata("design:type", Date)
 ], Income.prototype, "income_date", void 0);
 __decorate([
@@ -47,15 +47,22 @@ __decorate([
     __metadata("design:type", Number)
 ], Income.prototype, "users_id", void 0);
 __decorate([
-    typeorm_1.CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.CreateDateColumn({
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP(6)',
+    }),
     __metadata("design:type", Date)
 ], Income.prototype, "created_at", void 0);
 __decorate([
-    typeorm_1.UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.UpdateDateColumn({
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP(6)',
+        onUpdate: 'CURRENT_TIMESTAMP(6)',
+    }),
     __metadata("design:type", Date)
 ], Income.prototype, "updated_at", void 0);
 __decorate([
-    typeorm_1.Column({ type: "timestamp", nullable: true }),
+    typeorm_1.Column({ type: 'timestamp', nullable: true }),
     __metadata("design:type", Date)
 ], Income.prototype, "deleted_at", void 0);
 Income = __decorate([

@@ -9,11 +9,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DatabaseModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const ormcofig_1 = require("../ormcofig");
+const ormconfig_1 = require("../ormconfig");
 let DatabaseModule = class DatabaseModule {
 };
 DatabaseModule = __decorate([
-    common_1.Module({ imports: [typeorm_1.TypeOrmModule.forRoot(ormcofig_1.default)] })
+    common_1.Module({ imports: [typeorm_1.TypeOrmModule.forRoot(ormconfig_1.default)] })
 ], DatabaseModule);
 exports.DatabaseModule = DatabaseModule;
 //# sourceMappingURL=database.module.js.map

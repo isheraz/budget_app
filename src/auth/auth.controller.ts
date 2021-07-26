@@ -29,7 +29,7 @@ export class AuthController {
     async register(
         @Body(SETTINGS.VALIDATION_PIPE)
         request: CreateUserDto,
-        ): Promise<User> {
+        ):Promise<User>{
             try{
                 return await this.authService.register(request);
             }
@@ -37,9 +37,7 @@ export class AuthController {
                 if (error?.code === POSTGRES_ERROR_CODES.UNIQUE_VIOLATION) {
                     throw new HttpException('User with that email already exists', HttpStatus.BAD_REQUEST);
                   }
-                  throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
-                }
+                throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
             }
+        }
     }
-
-}

@@ -8,19 +8,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("@nestjs/typeorm");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const user_module_1 = require("./user/user.module");
 const auth_module_1 = require("./auth/auth.module");
 const database_module_1 = require("./database/database.module");
 const expense_module_1 = require("./expenses/expense.module");
-const ormcofig_1 = require("./ormcofig");
+const category_module_1 = require("./category/category.module");
+const sub_category_module_1 = require("./sub-category/sub-category.module");
+const group_module_1 = require("./group/group.module");
+const users_groups_module_1 = require("./users-groups/users-groups.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [typeorm_1.TypeOrmModule.forRoot(ormcofig_1.default), user_module_1.UserModule, auth_module_1.AuthModule, database_module_1.DatabaseModule, expense_module_1.ExpenseModule],
+        imports: [
+            database_module_1.DatabaseModule,
+            user_module_1.UserModule,
+            auth_module_1.AuthModule,
+            expense_module_1.ExpenseModule,
+            category_module_1.CategoryModule,
+            sub_category_module_1.SubCategoryModule,
+            group_module_1.GroupModule,
+            users_groups_module_1.UsersGroupsModule,
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

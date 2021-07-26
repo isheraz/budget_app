@@ -11,11 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Expenses = void 0;
 const typeorm_1 = require("typeorm");
-var paid_for_type;
-(function (paid_for_type) {
-    paid_for_type["USER"] = "USER";
-    paid_for_type["GROUP"] = "GROUP";
-})(paid_for_type || (paid_for_type = {}));
 let Expenses = class Expenses {
 };
 __decorate([
@@ -31,7 +26,7 @@ __decorate([
     __metadata("design:type", String)
 ], Expenses.prototype, "description", void 0);
 __decorate([
-    typeorm_1.Column({ type: "timestamp", nullable: true }),
+    typeorm_1.Column({ type: 'timestamp', nullable: true }),
     __metadata("design:type", Date)
 ], Expenses.prototype, "expense_date", void 0);
 __decorate([
@@ -47,7 +42,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Expenses.prototype, "paid_by", void 0);
 __decorate([
-    typeorm_1.Column('text'),
+    typeorm_1.Column(),
     __metadata("design:type", String)
 ], Expenses.prototype, "paid_for_type", void 0);
 __decorate([
@@ -55,15 +50,22 @@ __decorate([
     __metadata("design:type", Number)
 ], Expenses.prototype, "paid_for_id", void 0);
 __decorate([
-    typeorm_1.CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.CreateDateColumn({
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP(6)',
+    }),
     __metadata("design:type", Date)
 ], Expenses.prototype, "created_at", void 0);
 __decorate([
-    typeorm_1.UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.UpdateDateColumn({
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP(6)',
+        onUpdate: 'CURRENT_TIMESTAMP(6)',
+    }),
     __metadata("design:type", Date)
 ], Expenses.prototype, "updated_at", void 0);
 __decorate([
-    typeorm_1.Column({ type: "timestamp", nullable: true }),
+    typeorm_1.Column({ type: 'timestamp', nullable: true }),
     __metadata("design:type", Date)
 ], Expenses.prototype, "deleted_at", void 0);
 Expenses = __decorate([

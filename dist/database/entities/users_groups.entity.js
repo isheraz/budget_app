@@ -24,17 +24,24 @@ __decorate([
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Number)
-], UsersGroups.prototype, "user_id", void 0);
+], UsersGroups.prototype, "users_id", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", Number)
 ], UsersGroups.prototype, "groups_id", void 0);
 __decorate([
-    typeorm_1.CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.CreateDateColumn({
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP(6)',
+    }),
     __metadata("design:type", Date)
 ], UsersGroups.prototype, "created_at", void 0);
 __decorate([
-    typeorm_1.UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.UpdateDateColumn({
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP(6)',
+        onUpdate: 'CURRENT_TIMESTAMP(6)',
+    }),
     __metadata("design:type", Date)
 ], UsersGroups.prototype, "updated_at", void 0);
 UsersGroups = __decorate([

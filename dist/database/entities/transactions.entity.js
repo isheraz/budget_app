@@ -26,7 +26,7 @@ __decorate([
     __metadata("design:type", String)
 ], Transactions.prototype, "description", void 0);
 __decorate([
-    typeorm_1.Column({ type: "timestamp", nullable: true }),
+    typeorm_1.Column({ type: 'timestamp', nullable: true }),
     __metadata("design:type", Date)
 ], Transactions.prototype, "date", void 0);
 __decorate([
@@ -50,15 +50,22 @@ __decorate([
     __metadata("design:type", Number)
 ], Transactions.prototype, "groups_id", void 0);
 __decorate([
-    typeorm_1.CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.CreateDateColumn({
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP(6)',
+    }),
     __metadata("design:type", Date)
 ], Transactions.prototype, "created_at", void 0);
 __decorate([
-    typeorm_1.UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" }),
+    typeorm_1.UpdateDateColumn({
+        type: 'timestamp',
+        default: () => 'CURRENT_TIMESTAMP(6)',
+        onUpdate: 'CURRENT_TIMESTAMP(6)',
+    }),
     __metadata("design:type", Date)
 ], Transactions.prototype, "updated_at", void 0);
 __decorate([
-    typeorm_1.Column({ type: "timestamp", nullable: true }),
+    typeorm_1.Column({ type: 'timestamp', nullable: true }),
     __metadata("design:type", Date)
 ], Transactions.prototype, "deleted_at", void 0);
 Transactions = __decorate([
