@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from 'src/user/dto/create-user.dto';
 import { User } from 'src/user/user.entity';
@@ -30,16 +30,22 @@ export class AuthService {
     }
 
     async validateUser(username: string, password: string): Promise<any>{
-        const user = await this.userService.findOne(username);
-        const isPasswordMatch = bcrypt.compare(password, user.password);
+        try{
+            const user = await this.userService.findOne(username);
+            
+            const isPasswordMatch = bcrypt.compare(password, user.password);
 
-        if(user && isPasswordMatch){
-            const {password, email, ...rest} = user;
-
-            return rest;
+            if(isPasswordMatch){
+                const {password, email, ...rest} = user;
+    
+                return rest;
+            }
+    
+            return null;
         }
-
-        return null;
+        catch(error){
+            throw new HttpException('Wrong credentials provided', HttpStatus.BAD_REQUEST);
+        }
     }
 
 
