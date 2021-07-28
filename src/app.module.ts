@@ -12,6 +12,8 @@ import { UsersGroupsModule } from './users-groups/users-groups.module';
 @Module({
   imports: [
     DatabaseModule,
+    UserModule,
+    AuthModule,
     ExpenseModule,
     CategoryModule,
     SubCategoryModule,

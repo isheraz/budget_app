@@ -38,9 +38,7 @@ export class AuthController {
                 if (error?.code === POSTGRES_ERROR_CODES.UNIQUE_VIOLATION) {
                     throw new HttpException('User with that email already exists', HttpStatus.BAD_REQUEST);
                   }
-                  throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
-                }
+                throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
             }
+        }
     }
-
-}
