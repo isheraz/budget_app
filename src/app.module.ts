@@ -8,9 +8,13 @@ import { CategoryModule } from './category/category.module';
 import { SubCategoryModule } from './sub-category/sub-category.module';
 import { GroupModule } from './group/group.module';
 import { UsersGroupsModule } from './users-groups/users-groups.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     DatabaseModule,
     UserModule,
     AuthModule,
