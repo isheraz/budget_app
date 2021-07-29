@@ -29,5 +29,4 @@ export class Countries {
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
   public updated_at: Date;
-  
 }
