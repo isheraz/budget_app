@@ -2,11 +2,9 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Users } from './users.entity';
 
 @Entity()
 export class Countries {
@@ -31,8 +29,5 @@ export class Countries {
     onUpdate: 'CURRENT_TIMESTAMP(6)',
   })
   public updated_at: Date;
-
-  // Relations
-  @OneToMany(() => Users, (users) => users.countries)
-  users: Users[];
+  
 }

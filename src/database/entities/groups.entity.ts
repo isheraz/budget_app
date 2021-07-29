@@ -13,7 +13,7 @@ export class Groups {
   @Column({ length: 32 })
   name: string;
   @Column()
-  user_id: number;
+  users_id: number;
   @CreateDateColumn({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP(6)',
