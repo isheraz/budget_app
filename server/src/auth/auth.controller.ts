@@ -12,17 +12,17 @@ export class AuthController {
     constructor(private readonly authService: AuthService){}
 
     @HttpCode(200)
-    @UseGuards(LocalAuthGuard)
+    //@UseGuards(LocalAuthGuard)
     @Post('/login')
     async login(
-        @Body(SETTINGS.VALIDATION_PIPE) 
+        @Body(SETTINGS.VALIDATION_PIPE)
         request: LoginDto
         ){
         try {
             return await this.authService.login(request);
         }
         catch(error){
-            throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new HttpException(error.response, error.status);
         }
     }
 

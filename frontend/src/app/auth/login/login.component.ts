@@ -12,6 +12,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class LoginComponent implements OnInit {
   
   loginForm!: FormGroup;
+  minPasswordLen: number = 8;
 
   constructor(
     private router: Router,
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
       ]),
       password: new FormControl(null, [
         Validators.required,
+        Validators.minLength(this.minPasswordLen),
       ]),
     })
   }
