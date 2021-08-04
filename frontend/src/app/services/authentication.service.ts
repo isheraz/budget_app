@@ -10,7 +10,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string) {
-    return this.http.post('http://localhost:3000/api/auth/login', {email, password}).pipe(
+    return this.http.post('http://localhost:3000/auth/login', {email, password}).pipe(
       map((data: any) => {
         const token = data.access_token;
         localStorage.setItem('access_token', token);

@@ -45,7 +45,6 @@ export class RegisterComponent implements OnInit {
   ** Form submit event
   */
   onSubmit(){
-    console.log("Laravel!");
     console.log(this.name?.value);
     console.log(this.email?.value);
     console.log(this.password?.value);
