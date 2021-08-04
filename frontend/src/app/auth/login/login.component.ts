@@ -33,7 +33,15 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    this.authService.login(this.email?.value, this.password?.value).subscribe(data => console.log(data));
+    this.authService.login(this.email?.value, this.password?.value).subscribe(
+      data => {
+        console.log(data)
+      },
+      error => {
+        console.log(error);
+        alert(error.error.message);
+      }
+      );
   }
 
   get email(){

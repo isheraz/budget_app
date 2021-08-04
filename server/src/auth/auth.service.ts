@@ -16,9 +16,7 @@ export class AuthService {
         return createdUser;
     }
 
-    public async login(request: any) {
-        
-        const user = await this.getAuthenticatedUser(request.email, request.password);
+    public async login(user: any) {
         const payload = { name: user.name, subject: user.id };
 
         return {

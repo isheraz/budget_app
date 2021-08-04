@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, Post, Req, UseGuards } from '@nestjs/common';
 import { SETTINGS } from '../app.utils';
 import { POSTGRES_ERROR_CODES } from '../database/postgres-error-codes';
 import { CreateUserDto } from '../user/dto/create-user.dto';
@@ -12,14 +12,11 @@ export class AuthController {
     constructor(private readonly authService: AuthService){}
 
     @HttpCode(200)
-    //@UseGuards(LocalAuthGuard)
+    @UseGuards(LocalAuthGuard)
     @Post('/login')
-    async login(
-        @Body(SETTINGS.VALIDATION_PIPE)
-        request: LoginDto
-        ){
+    async login(@Req() request){
         try {
-            return await this.authService.login(request);
+            return await this.authService.login(request.user);
         }
         catch(error){
             throw new HttpException(error.response, error.status);
