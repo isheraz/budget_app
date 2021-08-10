@@ -9,6 +9,7 @@ import { SubCategoryModule } from './sub-category/sub-category.module';
 import { GroupModule } from './group/group.module';
 import { UsersGroupsModule } from './users-groups/users-groups.module';
 import { ConfigModule } from '@nestjs/config';
+import { IncomeModule } from './income/income.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { ConfigModule } from '@nestjs/config';
     SubCategoryModule,
     GroupModule,
     UsersGroupsModule,
+    IncomeModule,
   ],
   controllers: [],
   providers: [AppService],

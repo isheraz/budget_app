@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { type } from 'os';
 import { IncomeService } from './income.service';
 
 @Controller('income')
@@ -14,7 +15,7 @@ export class IncomeController {
   constructor(private readonly incomeService: IncomeService) {}
 
   @Post()
-  addExpense(
+  addIncome(
     @Body('amount') amount: number,
     @Body('description') description: string,
     @Body('income_date') income_date: Date,
@@ -34,12 +35,12 @@ export class IncomeController {
   }
 
   @Get()
-  getAllExpense() {
+  getAllIncome() {
     return this.incomeService.getAllIncome();
   }
 
   @Get(':id')
-  getExpense(@Param('id') incomeId: number) {
+  getIncome(@Param('id') incomeId: number) {
     return this.incomeService.getIncome(incomeId);
   }
 
@@ -50,7 +51,8 @@ export class IncomeController {
     @Body('description') description: string,
     @Body('income_date') income_date: Date,
     @Body('categories_id') categories_id: number,
-    @Body('user_id') user_id: number
+    @Body('user_id') user_id: number,
+    @Body('type') type: string
   ) {
     const resp = this.incomeService.update(
       incomeId,
@@ -58,7 +60,8 @@ export class IncomeController {
       description,
       income_date,
       categories_id,
-      user_id
+      user_id,
+      type
     );
     return resp;
   }

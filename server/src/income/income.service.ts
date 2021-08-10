@@ -53,7 +53,8 @@ export class IncomeService {
     description: string,
     income_date: Date,
     categories_id: number,
-    user_id: number
+    user_id: number,
+    type: string
   ): Promise<{}> {
     const resp = await this.incomeRepository.update(
       { id: id },
@@ -63,6 +64,7 @@ export class IncomeService {
         income_date: income_date,
         categories_id: categories_id,
         users_id: user_id,
+        type: type,
       }
     );
     const response = {
