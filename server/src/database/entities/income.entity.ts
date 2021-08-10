@@ -6,10 +6,6 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-enum type {
-  LOAN = 'LOAN',
-  INCOME = 'INCOME',
-}
 @Entity()
 export class Income {
   @PrimaryGeneratedColumn()
@@ -23,7 +19,7 @@ export class Income {
   @Column()
   categories_id: number;
   @Column('text')
-  type: type;
+  type: string;
   @Column()
   users_id: number;
   @CreateDateColumn({
