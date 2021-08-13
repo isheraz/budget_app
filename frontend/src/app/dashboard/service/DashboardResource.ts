@@ -15,4 +15,10 @@ export class DashboardResource {
       ExpenseList[]
     >;
   }
+
+  public getAllIncome(): Observable<ExpenseList[]> {
+    return this.httpClient.get(this.URL + '/income') as Observable<
+      ExpenseList[]
+    >;
+  }
 }

@@ -32,6 +32,7 @@ export class IncomeService {
     obj.income_date = income_date;
     obj.categories_id = categories_id;
     obj.users_id = user_id;
+    obj.type = type;
     const resp = await this.incomeRepository.save(obj);
     const response = {
       status: true,

@@ -10,4 +10,8 @@ export class DashboardService {
   public getExpenses(): Observable<ExpenseList[]> {
     return this.dashboardResource.getAllExpense();
   }
+
+  public getIncome(): Observable<ExpenseList[]> {
+    return this.dashboardResource.getAllIncome();
+  }
 }

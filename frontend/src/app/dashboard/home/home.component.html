@@ -9,12 +9,14 @@
         <div class="col-6">
             <mat-card class="example-card">
                 <mat-card-header>
-                    <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title>Monthly budget</mat-card-title>
+
+                    <div class="title col-11">
+                        <mat-card-title>Monthly budget</mat-card-title>
+                    </div>
                 </mat-card-header>
                 <mat-card-content>
-                    <div class="row">
-                        <div class="col-6">
+                    <div class="p-2 mt-5 row">
+                        <div class="col-6 p-3">
                             <div class="row income-area">
                                 <div class="income"></div>
                             </div>
@@ -166,11 +168,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let row of expList | async">
+                        <tr *ngFor="let row of incomeList | async">
                             <td>
                                 {{row['description']}}
                             </td>
-                            <td>300</td>
+                            <td>500</td>
                             <td>{{row['amount']}}</td>
                             <td>100</td>
                         </tr>

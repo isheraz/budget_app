@@ -31,7 +31,7 @@ export class IncomeController {
       user_id,
       type
     );
-    return { id: id };
+    return id;
   }
 
   @Get()

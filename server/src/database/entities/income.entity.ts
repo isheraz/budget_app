@@ -18,7 +18,7 @@ export class Income {
   income_date: Date;
   @Column()
   categories_id: number;
-  @Column('text')
+  @Column()
   type: string;
   @Column()
   users_id: number;

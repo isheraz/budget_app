@@ -10,6 +10,7 @@ import { ExpenseList } from '../service/dataModel/expenseList';
 })
 export class HomeComponent implements OnInit {
   public expList: Observable<ExpenseList[]> | undefined;
+  public incomeList: Observable<ExpenseList[]> | undefined;
 
   constructor(private dashboardService: DashboardService) {}
 
@@ -21,5 +22,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.expList = this.dashboardService.getExpenses();
+    this.incomeList = this.dashboardService.getIncome();
   }
 }
